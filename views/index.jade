@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  link(rel='stylesheet' href='css/index.css')
+  div.container
+    div.wrapper
+      div.title
+        h1(onclick="top.location.href='/'")= title
+      div
+        button(type="button" class="btn btn-primary" onclick="top.location.href='/manual'") Manual
+          //a(href="/manual") Manual
+        button(type="button" class="btn btn-primary" onclick="top.location.href='/options'") Auto

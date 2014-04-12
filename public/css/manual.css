@@ -1,0 +1,35 @@
+body{
+	background-image: url('../images/food.png');
+	background-repeat: repeat;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover{
+	text-decoration: none;
+	color: white;
+}
+
+button {
+	width: 45%;
+}
+
+div.container{
+	width: 400px;
+	text-align: center;
+}
+div {
+	margin-top: 10px;
+}
+
+input.restaurant{
+
+}
+.remove{
+	display: block;
+	float: right;
+}

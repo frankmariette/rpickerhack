@@ -1,0 +1,32 @@
+body{
+	text-align: center;
+	color: white;
+	background-image: url('../images/food.png');
+	background-repeat: repeat;
+}
+h1{
+	position: relative;
+}
+div.wrapper{
+	width: 50%;
+	max-height: 75%;
+	margin: 0 auto;
+}
+button{
+	position: relative;
+	margin: 0 auto;
+	margin-left: 15px;
+	margin-right: 15px;
+
+	width: 40%;
+}
+
+a{
+	text-decoration: none;
+	color: white
+}
+
+a:hover{
+	text-decoration: none;
+	color: white;
+}

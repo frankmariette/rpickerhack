@@ -1,0 +1,10 @@
+extends layout
+block content
+  div.container
+    h1(onclick="top.location.href='/'")= title 
+    form(action="saveOptions();" class="form-group")
+      div
+        input(type="text" class="options form-control" placeholder="City" required)
+        input(type="text" class="options form-control" placeholder="State" required)
+        p -- OR --
+        button(type="button" class="btn btn-primary location" onclick="getLocation();") Get Current Location
