@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rpicker</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	<style type="text/css">
+		div.container{
+			width: 350px;
+			text-align: center;
+		}
+		div {
+			margin-top: 10px;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+		function pickPlace(){
+			var data = document.getElementsByClassName('restaurant');
+			for (var i = data.length - 1; i >= 0; i--) {
+				console.log(data[i].value);
+			};
+				
+		};
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>Restaurant Picker</h1>
+		<form action="pickPlace();" method="" class="form-group" >
+			<div>
+				<input type="text" placeholder="restaurant" class="form-control restaurant">
+			</div>
+			<div>
+				<input type="text" placeholder="restaurant" class="form-control restaurant">
+			</div>
+			<div id="buttons">
+				<button type="button" class="btn btn-primary pull-left" id="add"><span class="glypicon glyphicon-plus"> Add Restaurant</span></button>
+				<button type="button" class="btn btn-success pull-right" id="submit" onclick="pickPlace();">Pick a place!</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
