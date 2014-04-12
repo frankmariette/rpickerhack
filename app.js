@@ -41,13 +41,34 @@ searchForBusinessInputs.set_City("Richmond Heights");
 searchForBusinessChoreo.execute(
     searchForBusinessInputs,
     function(results){
-        console.log(results.get_Response());
-    },
-    function(error){
-        console.log(error.type);
-        console.log(error.message);
-    }
+        //Parse JSON
+        if(results) {
+            //console.log(results.get_Response());
+            var obj = JSON.parse(results.get_Response());
+
+            var nameOfRestaurant = obj.name;
+            var rating = obj.reviews[0].rating;
+            console.log(nameOfRestaurant);
+            console.log(rating);
+            // console.log(obj.name);
+            // console.log(obj.reviews[0].rating);
+        }
+    }, function(error){
+            console.log(error.type);
+            console.log(error.message);
+        }
 );
+;
+
+// var obj;
+// app.get('/',function(req,res){
+//   exploreChoreo.execute(
+//       searchForBusinessInputs,
+//       function(results){
+//         inspectObj(JSON.parse(results.get_Response()))
+//         ;},
+//       function(error){console.log(error.type); console.log(error.message);});
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
