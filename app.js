@@ -21,7 +21,7 @@ var Foursquare = require("temboo/Library/Foursquare/Venues");
 var exploreChoreo = new Foursquare.Explore(session);
 var exploreInputs = exploreChoreo.newInputSet();
 //all user dependent varibles
-var city = "Columbia";
+var city = "Columbia, Missouri";
 var radius = 3;
 var Mradius = radius * 1609.34;
 var latitude = 0;
