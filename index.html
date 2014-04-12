@@ -18,12 +18,24 @@
 	</style>
 
 	<script type="text/javascript">
+		// Creates an array of places currently in que and selects a choice randomly from the array.
 		function pickPlace(){
-			var data = document.getElementsByClassName('restaurant');
-			for (var i = data.length - 1; i >= 0; i--) {
-				console.log(data[i].value);
-			};
-				
+			var min = 0;
+			var data = $('.restaurant').toArray();
+			var rand = getRandomInt(min, data.length-1);
+			$('#result').hide();
+
+			console.log(rand);
+
+			$('.clearfix').after('<div id="result"><scan style="color: green;">You should go to ' + data[rand].value + '!</div>');
+			
+		};
+		function getRandomInt(min, max) {
+		  return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		function addPlace(){
+			$('#buttons').before('<div><input type="text" placeholder="Restaurant" class="form-control restaurant"></div>');
 		};
 	</script>
 </head>
@@ -32,15 +44,16 @@
 		<h1>Restaurant Picker</h1>
 		<form action="pickPlace();" method="" class="form-group" >
 			<div>
-				<input type="text" placeholder="restaurant" class="form-control restaurant">
+				<input type="text" placeholder="Restaurant" class="form-control restaurant">
 			</div>
 			<div>
-				<input type="text" placeholder="restaurant" class="form-control restaurant">
+				<input type="text" placeholder="Restaurant" class="form-control restaurant">
 			</div>
 			<div id="buttons">
-				<button type="button" class="btn btn-primary pull-left" id="add"><span class="glypicon glyphicon-plus"> Add Restaurant</span></button>
+				<button type="button" class="btn btn-primary pull-left" id="add" onclick="addPlace();"><span class="glypicon glyphicon-plus"> Add Restaurant</span></button>
 				<button type="button" class="btn btn-success pull-right" id="submit" onclick="pickPlace();">Pick a place!</button>
 			</div>
+			<div class="clearfix"></div>
 		</form>
 	</div>
 </body>
