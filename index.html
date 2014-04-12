@@ -8,22 +8,36 @@
 	<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 	<style type="text/css">
 		div.container{
-			width: 350px;
+			width: 400px;
 			text-align: center;
 		}
 		div {
 			margin-top: 10px;
 		}
 
+		input.restaurant{
+			max-width: 90%;
+		}
+		.remove{
+			display: block;
+			float: right;
+		}
+
 	</style>
 
 	<script type="text/javascript">
+
+
+		// Used to keep track of number of restaurant input fields.
+		var restaurantCounter = 0;
+		
+
 		// Creates an array of places currently in que and selects a choice randomly from the array.
 		function pickPlace(){
 			var min = 0;
 			var data = $('.restaurant').toArray();
 			var rand = getRandomInt(min, data.length-1);
-			$('#result').hide();
+			$('#result').remove();
 
 			console.log(rand);
 
@@ -35,8 +49,20 @@
 		}
 
 		function addPlace(){
-			$('#buttons').before('<div><input type="text" placeholder="Restaurant" class="form-control restaurant"></div>');
+			$('#buttons').before('<div><input type="text" placeholder="Restaurant" class="form-control restaurant ' + restaurantCounter + '" required></div>');
+
+			restaurantCounter++;
 		};
+
+		console.log(jobs[0]['venue']);
+		JSON.parse()
+		response = function(results){
+			return results.get_Response()
+		}
+
+		function removePlace(){
+			console.log()
+		}
 	</script>
 </head>
 <body>
@@ -44,10 +70,10 @@
 		<h1>Restaurant Picker</h1>
 		<form action="pickPlace();" method="" class="form-group" >
 			<div>
-				<input type="text" placeholder="Restaurant" class="form-control restaurant">
+				<input type="text" placeholder="Restaurant" class="restaurant" required>
 			</div>
 			<div>
-				<input type="text" placeholder="Restaurant" class="form-control restaurant">
+				<input type="text" placeholder="Restaurant" class="restaurant" required>
 			</div>
 			<div id="buttons">
 				<button type="button" class="btn btn-primary pull-left" id="add" onclick="addPlace();"><span class="glypicon glyphicon-plus"> Add Restaurant</span></button>
