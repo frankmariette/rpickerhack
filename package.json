@@ -1,16 +1,17 @@
-{ "name" : "yelp"
-, "description" : "Library for interfacing with Yelp's API v2.0."
-, "version" : "0.1.1"
-, "directories" : { "lib" : "./lib" }
-, "main" : "index.js"
-, "author" : {
-    "name" : "Joe Loser"
-    , "email" : "jrlmwc@mail.missouri.edu"
-    , "url" : "https://github.com/karrde00/rpickerhack"
-  }
-, "repository" : { "type":"git", "url":"https://github.com/olalonde/node-yelp.git" }
-, "homepage" : "https://github.com/karrde00/rpickerhack"
-, "dependencies": {
-    "oauth": ">=0.9.0 <1.0.0"
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "jade": "~1.3.0"
   }
 }
