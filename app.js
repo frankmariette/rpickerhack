@@ -72,9 +72,9 @@ app.get('/options', function(req, res){
 
 app.post('/options', function(req, res){
 		helpers.saveOptions( req.body, function(data){
-			//console.log(data);
-		});
-        res.render('selectAuto', {title: title});
+		console.log(data);
+		res.render('selectAuto', {title: title});
+        });
 });
 
 

@@ -1,5 +1,5 @@
 var userLocation, radius;
-//var rank = {rating: rating};
+var rank;
 
 // this.exploreInputs = exploreInputs;
 
@@ -16,11 +16,12 @@ var exploreInputs = exploreChoreo.newInputSet();
 
 
 // User inputs
-module.exports.saveOptions = function saveOptions(data){
+module.exports.saveOptions = function saveOptions(data,callback){
   var city = data.city;
   var state = data.state;
   var latitude = data.latitude;
   var longitude = data.longitude;
+  rank = data.rating;
   console.log(latitude);
   console.log(longitude);
   userLocation = city + ', ' + state; 
@@ -32,6 +33,7 @@ module.exports.saveOptions = function saveOptions(data){
   }
 
  execution(userLocation, radius);
+ callback({name: names,rating: rating});
 }
 
 
@@ -50,7 +52,6 @@ function execution (location, radius) {
   exploreInputs.set_ClientID("0Y4WX42SOV1NXZOC2AGSUZAUOKQ1LVYDIK4WAMI5UK0OG3LU");
 
   exploreInputs.set_Limit(500);
-
   exploreChoreo.execute(
     exploreInputs,
     function(results){
@@ -63,12 +64,10 @@ function execution (location, radius) {
     });
 }
 
-
+var names = rating = [];
 function inspectObj(obj){
    var length = obj.response.groups[0].items.length;
-   var vens = obj.response.groups[0].items;
-   var names = rating = [];
-   
+   var vens = obj.response.groups[0].items;   
  
     
    for(var i=0;i<length;i++){
