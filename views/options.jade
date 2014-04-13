@@ -1,14 +1,14 @@
 extends layout
 block content
 
-  script(src='javascripts/foursquare.js')
+  //script(src='javascripts/foursquare.js')
   script(src='javascripts/getLocation.js')
 
   link(rel='stylesheet' href='css/options.css')
   div.container
     p #{exploreInputs}
     h1(onclick="top.location.href='/'")= title
-    form(class="form-group" method="post")
+    form(class="form-group" method="post" action='/options')
       div
         label Select a rating
         select(name='rating')
@@ -26,4 +26,4 @@ block content
         button(type="button" name="geolocation" class="btn btn-primary location" onclick="getLocation();") Get Current Location
       div
         input(type="text" class="options form-control" name="radius" placeholder="Radius in Miles")
-        input(type="submit" class="btn btn-success" value="Press me!" onclick="saveOptions();") 
+        input(type="submit" class="btn btn-success" value="Press me!") 

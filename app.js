@@ -9,7 +9,7 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var Firebase = require('firebase');
-var helpers = require('./public/javascripts/foursquare.js');
+var helpers = require('./foursquare.js');
 var myRootRef = new Firebase('https://blinding-fire-4443.firebaseio.com/');
 //set up temboo session
 var tsession = require("temboo/core/temboosession");
@@ -73,7 +73,7 @@ app.get('/options', function(req, res){
 app.post('/options', function(req, res){
 		helpers.saveOptions( req.body, function(data){
 			res.render('/selectAuto', {title: title, data: data});
-			console.log(data);
+			//console.log(data);
 		});
 });
 
