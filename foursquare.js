@@ -1,4 +1,6 @@
-var userLocation, radius, rank;
+var userLocation, radius;
+//var rank = {rating: rating};
+
 // this.exploreInputs = exploreInputs;
 
 
@@ -57,31 +59,27 @@ function execution (location, radius) {
     
     function(error){
       console.log(error.type); 
-      console.log("whats up bro, its an error");
+      console.log(error.message);
     });
 }
 
-// exploreChoreo.execute(
-//     exploreInputs,
-//     function(results){inspectObj(JSON.parse(results.get_Response());},
-//     function(error){console.log(error.type); console.log(error.message);}
-// );
 
 function inspectObj(obj){
    var length = obj.response.groups[0].items.length;
    var vens = obj.response.groups[0].items;
    var names = rating = [];
-   var rating = [];
+   
  
-
+    
    for(var i=0;i<length;i++){
      if(vens[i].venue.rating >= rank){
      names.push(vens[i].venue.name);
      rating.push(vens[i].venue.rating);
      }
+
    }
-   // for(var i=0; i<names.length; i++){
-   // 	  console.log(names[i]);
-   // 	  console.log(rating[i]);
-   //}
+   for(var i=0; i<names.length; i++){
+   	  console.log(names[i]);
+   	  console.log(rating[i]);
+   }
 };
