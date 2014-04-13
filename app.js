@@ -71,6 +71,10 @@ app.get('/options', function(req, res){
 });
 
 app.post('/options', function(req, res){
+		saveOptions( req.body, function(data){
+			res.render('/selectAuto', {title: title});
+		});
+	}
 
 });
 
