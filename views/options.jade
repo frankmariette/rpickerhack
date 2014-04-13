@@ -8,7 +8,7 @@ block content
   div.container
     p #{exploreInputs}
     h1(onclick="top.location.href='/'")= title
-    form(class="form-group")
+    form(class="form-group" method="post")
       div
         label Select a rating
         select(name='rating')

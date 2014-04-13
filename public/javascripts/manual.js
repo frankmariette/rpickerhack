@@ -10,8 +10,8 @@
 			$('#result').remove();
 
 			//console.log(rand);
-
-			$('.clearfix').after('<div id="result"><scan style="color: white;">You should go to ' + data[rand].value + '!</div>');
+			alert(data[rand].value);
+			//$('.clearfix').after('<div id="result"><scan style="color: white;">You should go to ' + data[rand].value + '!</div>');
 			
 		};
 		function getRandomInt(min, max) {

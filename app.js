@@ -9,9 +9,8 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var Firebase = require('firebase');
-var api = require('foursquare.js');
+var helpers = require('./public/javascripts/foursquare.js');
 var myRootRef = new Firebase('https://blinding-fire-4443.firebaseio.com/');
-
 //set up temboo session
 var tsession = require("temboo/core/temboosession");
 var session = new tsession.TembooSession("samkreter", "Rpicker", "1b32c6ff7d394e29885041b925f4f458");
@@ -37,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use( express.cookieParser() );
 app.use(express.session({secret:'thisismysupersecret'}));
 
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -54,7 +54,7 @@ app.use(function(req, res, next){
 	}
 });
 
-var title = 'Restaurant Picker'
+var title = 'Restaurant Roulette';
 
 app.get('/', function(req, res){
 	res.render('index', {title: title});
@@ -71,11 +71,10 @@ app.get('/options', function(req, res){
 });
 
 app.post('/options', function(req, res){
-		saveOptions( req.body, function(data){
-			res.render('/selectAuto', {title: title});
+		helpers.saveOptions( req.body, function(data){
+			res.render('/selectAuto', {title: title, data: data});
+			console.log(data);
 		});
-	}
-
 });
 
 app.get('/selectAuto', function(req, res){
