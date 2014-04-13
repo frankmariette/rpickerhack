@@ -1,10 +1,25 @@
 extends layout
 block content
+  script(src='javascripts/foursquare.js')
+  script(src='javascripts/getLocation.js')
+  link(rel='stylesheet' href='css/options.css')
   div.container
-    h1(onclick="top.location.href='/'")= title 
-    form(action="saveOptions();" class="form-group")
-      div
-        input(type="text" class="options form-control" placeholder="City" required)
-        input(type="text" class="options form-control" placeholder="State" required)
-        p -- OR --
-        button(type="button" class="btn btn-primary location" onclick="getLocation();") Get Current Location
+    h1(onclick="top.location.href='/'")= title
+    div
+      label Select a rating
+      select(id='rating')
+        -for (var i =1; i < 11; i++)
+          option(val=i)= i
+
+
+    div
+      input(type="text" class="options form-control" id="city" placeholder="City" required)
+    div
+      input(type="text" class="options form-control" id="state" placeholder="State" required)
+    div
+      p -- OR --
+    div
+      button(type="button" class="btn btn-primary location" onclick="getLocation();") Get Current Location
+    div
+      input(type="text" class="options form-control" id="radius" placeholder="Radius in Miles")
+      button(type="button" class="btn btn-success" onclick="saveOptions();") Press me!

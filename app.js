@@ -11,6 +11,16 @@ var path = require('path');
 var Firebase = require('firebase');
 var myRootRef = new Firebase('https://blinding-fire-4443.firebaseio.com/');
 
+//set up temboo session
+var tsession = require("temboo/core/temboosession");
+var session = new tsession.TembooSession("samkreter", "Rpicker", "1b32c6ff7d394e29885041b925f4f458");
+//get foursquare library 
+var Foursquare = require("temboo/Library/Foursquare/Venues");
+//set up input varibles
+var exploreChoreo = new Foursquare.Explore(session);
+var exploreInputs = exploreChoreo.newInputSet();
+
+
 var app = express();
 
 // all environments
@@ -52,11 +62,11 @@ app.get('/manual', function(req,res){
 });
 
 app.get('/options', function(req, res){
-	res.render('options', {title: title});
+	res.render('options', {title: title, exploreInputs: exploreInputs});
 });
 
-app.get('/auto', function(req, res){
-	res.render('auto', {title: title});
+app.get('/selectAuto', function(req, res){
+	res.render('selectAuto', {title: title});
 });
 
 http.createServer(app).listen(app.get('port'), function(){

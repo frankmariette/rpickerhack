@@ -9,7 +9,7 @@
 			var rand = getRandomInt(min, data.length-1);
 			$('#result').remove();
 
-			console.log(rand);
+			//console.log(rand);
 
 			$('.clearfix').after('<div id="result"><scan style="color: white;">You should go to ' + data[rand].value + '!</div>');
 			
