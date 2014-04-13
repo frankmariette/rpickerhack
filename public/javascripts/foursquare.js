@@ -1,21 +1,34 @@
-var userLocation, radius, latitude, longitude, rank;
-this.exploreInputs = exploreInputs;
+// var userLocation, radius, latitude, longitude, rank;
+// var tsession = require("temboo/core/temboosession");
+// var session = new tsession.TembooSession("samkreter", "Rpicker", "1b32c6ff7d394e29885041b925f4f458");
+// //get foursquare library 
+// var Foursquare = require("temboo/Library/Foursquare/Venues");
+// //set up input varibles
+// var exploreChoreo = new Foursquare.Explore(session);
+// var exploreInputs = exploreChoreo.newInputSet();
 
 // User inputs
-function saveOptions(){
-  var city = document.getElementById("city").value;
-  var state = document.getElementById('state').value;
-  userLocation = city + ', ' + state; 
-  console.log(userLocation);  
-  radius ? $('#radius').value : 0;
-  rank = $('#rating').value;
+function saveOptions(data, callback){
+  var city = data.city;
+  var state = data.state;
+  userLocation = city + ', ' + state;  
+  radius ? data.radius : 0;
+  rank = data.rating;
 
- execution(userLocation, radius);
-}
+// $( "form" ).submit(function( event ) {
+//     console.log( $( this ).serializeArray() );
+//     event.preventDefault();
+//   });
+
+
+
+// $( "form" ).submit(function( event ) {
+//     console.log( $( this ).serializeArray() );
+//     event.preventDefault();
+//   });
 
 
 // Set inputs
-function execution (location, radius) {
   var Mradius = radius * 1609.34;
   exploreInputs.set_ClientSecret("CGF0CXUPEOMXPVLF1OVLITXQWJRETO4SI5OOAVGR0DM441EM");
   if(latitude != 0){  
@@ -40,21 +53,22 @@ function execution (location, radius) {
       console.log(error.type); 
       console.log(error.message);
     });
+  callback()
 }
 
 // })
 function inspectObj(obj){
    var length = obj.response.groups[0].items.length;
-   var vens = obj.response.groups[0].items;
+   var venues = obj.response.groups[0].items;
    var names = rating = [];
-   var rating = [];
+  // var rating = [];
  
    // console.log(obj.response.headerLocation);
 
    for(var i=0;i<length;i++){
-     if(vens[i].venue.rating >= rank){
-     names.push(vens[i].venue.name);
-     rating.push(vens[i].venue.rating);
+     if(venues[i].venue.rating >= rank){
+     names.push(venues[i].venue.name);
+     rating.push(venues[i].venue.rating);
      }
    }
    for(var i=0; i<names.length; i++){

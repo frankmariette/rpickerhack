@@ -10,4 +10,5 @@ function showPosition(position){
   latitude = position.coords.latitude;
 
   console.log(longitude + ',' +  latitude)
+  $('form').append("<input type='hidden' name='latitude' value="+latitude+"><input type='hidden' name='longitude' value="+longitude+">");
 }

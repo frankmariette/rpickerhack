@@ -9,6 +9,7 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var Firebase = require('firebase');
+var api = require('foursquare.js');
 var myRootRef = new Firebase('https://blinding-fire-4443.firebaseio.com/');
 
 //set up temboo session
@@ -19,7 +20,6 @@ var Foursquare = require("temboo/Library/Foursquare/Venues");
 //set up input varibles
 var exploreChoreo = new Foursquare.Explore(session);
 var exploreInputs = exploreChoreo.newInputSet();
-
 
 var app = express();
 
@@ -34,7 +34,8 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.session({secret: '1234567890QWERTY'}));
+app.use( express.cookieParser() );
+app.use(express.session({secret:'thisismysupersecret'}));
 
 // development only
 if ('development' == app.get('env')) {
@@ -44,6 +45,7 @@ if ('development' == app.get('env')) {
 // Routing --Needs to be fixed later and moved out of here
 
 app.use(function(req, res, next){
+
 	res.status(404);
 
 	if (req.accepts('jade')){
@@ -63,7 +65,13 @@ app.get('/manual', function(req,res){
 });
 
 app.get('/options', function(req, res){
-	res.render('options', {title: title, exploreInputs: exploreInputs});
+	res.render('options', {title: title});
+	//console.log(exploreInputs);
+
+});
+
+app.post('/options', function(req, res){
+
 });
 
 app.get('/selectAuto', function(req, res){
